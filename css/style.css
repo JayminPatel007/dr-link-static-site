@@ -104,13 +104,15 @@ span.brand {
     color:#033738bd;
     margin-bottom: 30px;
 }
-.about-btn button {
+.about-btn a {
     width: 160px;
     height: 45px;
       transition: all 0.5s;
     border: 2px solid #0000a3;
     border-radius: 5px;
     margin: 0px 5px;
+    color: #181818;
+    padding: 5px 10px;
     background-color: transparent;
 }
 .img-icon:after {
@@ -160,7 +162,7 @@ span.brand {
 	margin: 80px 0px;
 }
 .header ul li a:hover {
-    color: #fff;
+    color: #0000a3;
     position: relative;
   }
 .div-color {
@@ -220,9 +222,10 @@ span.brand {
     outline: none;
     background: #0000a34a;
 }
-.about-btn button:hover {
+.about-btn a:hover {
     background-color: #0000a3;
     color: #fff;
+    text-decoration: none;
 }
 
 
@@ -521,16 +524,16 @@ transition: all 0.5s;
 .contact-detail {
     margin-top: 50px;
 }
-.about-btn button {
+.about-btn a {
 
     margin-bottom: 20px;
     }
-    .about-btn button:last-child{
+    .about-btn a:last-child{
     margin-bottom: 0px;
     }
 	.togle-menu.block {
     display: block;
-    position: absolute;
+    position: fixed;
     right: 0px;
     top: 80px;
     z-index: 999;
