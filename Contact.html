@@ -117,7 +117,7 @@
             <div class="contact-detail">
               <h2>Tell Us Your Message</h2>
               <div class="contact-form">
-                <form id="contact-form" action="assets/php/mail.php" method="post">
+                <form id="contact-form" method="post">
                   <div class="form-group">
                     <label>Your Name <span class="required">*</span></label>
                     <input type="text" name="customerName" id="customername" required=""> </div>
@@ -161,7 +161,52 @@
     $(".toggle-btn").click(function() {
         $(".togle-menu").toggleClass("block");
       });
+    $("#contact-form").submit(function(e) {
+      e.preventDefault();
+      var name = $("#customername").val();
+      var email = $("#customerEmail").val();
+      var subject = $("#contactSubject").val();
+      var message = $("#contactMessage").val();
+      if (!name || !email || !subject || !message) {
+        alert("Please fill all the fields");
+        return;
+      }
+      emailjs.send('service_jrgp11b', 'template_khyoadf', {
+        from_email: email,
+        from_name: name,
+        subject: subject,
+        message: message
+      }).then(
+        (response) => {
+          alert("Message Sent Successfully");
+        },
+        (error) => {
+          alert("Something went wrong!")
+          console.log(error)
+        },
+      );
+      $("#customername").val("");
+      $("#customerEmail").val("");
+      $("#contactSubject").val("");
+      $("#contactMessage").val("");
+    })
   });
+  </script>
+  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function(){
+        emailjs.init({
+          publicKey: "kg6i-TrhROJiehCLJ",
+          limitRate: {
+            // Set the limit rate for the application
+            id: 'app',
+            // Allow 1 request per 10s
+            throttle: 10000,
+          },
+        });
+    })();
   </script>
 </body>
 
